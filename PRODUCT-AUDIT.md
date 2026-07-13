@@ -9,8 +9,8 @@
 - Product photographs for every listed item
 - Square logo and a dark website banner
 - Retail prices and product descriptions
-- Kingston phone/WhatsApp number
-- Contact form, WhatsApp inquiries and policy page
+- Kingston phone number
+- Contact form, phone/text inquiries and policy page
 - Google Apps Script email/lead backend
 
 ## Missing or requiring confirmation

@@ -5,7 +5,7 @@
 Open `assets/js/config.js` and review:
 
 - `phoneDisplay`
-- `whatsappNumber`
+- `phoneNumber`
 - `publicEmail`
 - `instagramUrl`
 - `contactFormEndpoint`

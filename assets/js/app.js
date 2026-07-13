@@ -69,7 +69,7 @@
               <div class="product-price">${priceLabel(product)} CAD</div>
               <div class="product-actions">
                 <button class="btn btn-outline" type="button" data-view-product="${product.id}">View details</button>
-                <button class="btn btn-primary" type="button" data-whatsapp-product="${product.id}">Ask on WhatsApp</button>
+                <button class="btn btn-primary" type="button" data-message-product="${product.id}">Inquire by Message</button>
               </div>
             </div>
           </article>`
@@ -79,8 +79,8 @@
     productGrid.querySelectorAll("[data-view-product]").forEach((button) => {
       button.addEventListener("click", () => openProduct(button.dataset.viewProduct));
     });
-    productGrid.querySelectorAll("[data-whatsapp-product]").forEach((button) => {
-      button.addEventListener("click", () => openWhatsApp(button.dataset.whatsappProduct));
+    productGrid.querySelectorAll("[data-message-product]").forEach((button) => {
+      button.addEventListener("click", () => openTextMessage(button.dataset.messageProduct));
     });
   }
 
@@ -124,8 +124,8 @@
         <ul class="feature-list">${product.features.map((feature) => `<li>${feature}</li>`).join("")}</ul>
         <p><small>Cricket bats are natural willow products. Grains, colour, exact weight and appearance can vary between individual bats.</small></p>
         <div class="modal-actions">
-          <button class="btn btn-primary" type="button" id="modal-whatsapp">Ask on WhatsApp</button>
-          <button class="btn btn-outline" type="button" id="modal-email">Email inquiry</button>
+          <button class="btn btn-primary" type="button" id="modal-message">Inquire by Message</button>
+          <button class="btn btn-outline" type="button" id="modal-call">Call now</button>
         </div>
       </div>`;
 
@@ -144,15 +144,13 @@
       modalPrice.textContent = `${money(product.variants[Number(variantSelect.value)].price)} CAD`;
     });
 
-    modalBody.querySelector("#modal-whatsapp")?.addEventListener("click", () => {
+    modalBody.querySelector("#modal-message")?.addEventListener("click", () => {
       const variantIndex = variantSelect ? Number(variantSelect.value) : 0;
-      openWhatsApp(product.id, variantIndex);
+      openTextMessage(product.id, variantIndex);
     });
 
-    modalBody.querySelector("#modal-email")?.addEventListener("click", () => {
-      const variantIndex = variantSelect ? Number(variantSelect.value) : 0;
-      prefillProductInquiry(product, product.variants[variantIndex]);
-      closeModal();
+    modalBody.querySelector("#modal-call")?.addEventListener("click", () => {
+      window.location.href = `tel:+${config.phoneNumber}`;
     });
 
     modal.classList.add("open");
@@ -168,7 +166,7 @@
     document.body.classList.remove("modal-open");
   }
 
-  function openWhatsApp(productId, variantIndex = 0) {
+  function openTextMessage(productId, variantIndex = 0) {
     const product = products.find((item) => item.id === productId);
     if (!product) return;
     const variant = product.variants[variantIndex] || product.variants[0];
@@ -177,8 +175,7 @@
       `I am interested in ${product.name}${variant ? ` (${variant.label})` : ""} listed at ${money(variant.price)} CAD.`,
       "Please confirm current availability, exact photos/weight if applicable, and pickup or shipping options."
     ].join("\n");
-    const url = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank", "noopener");
+    window.location.href = `sms:+${config.phoneNumber}?body=${encodeURIComponent(message)}`;
   }
 
   function prefillProductInquiry(product, variant) {
@@ -200,7 +197,7 @@
       element.textContent = config.phoneDisplay || "";
     });
     document.querySelectorAll("[data-phone-link]").forEach((element) => {
-      element.href = `tel:+${config.whatsappNumber}`;
+      element.href = `tel:+${config.phoneNumber}`;
     });
     document.querySelectorAll("[data-email]").forEach((element) => {
       element.textContent = config.publicEmail || "Email through the contact form";

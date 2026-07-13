@@ -7,7 +7,7 @@ A zero-monthly-cost product catalogue designed for GitHub Pages.
 - Responsive mobile-first catalogue
 - Product category filters
 - Product detail gallery and variants
-- WhatsApp product inquiries
+- Phone, text-message and contact-form inquiries
 - Email/contact form
 - Free Google Apps Script backend
 - Lead logging to Google Sheets
