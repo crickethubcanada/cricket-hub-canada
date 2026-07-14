@@ -161,7 +161,7 @@ function sendOwnerEmail_(data) {
 function getRecipientEmail_() {
   const configured = PropertiesService.getScriptProperties().getProperty('CONTACT_EMAIL');
   const effectiveUser = Session.getEffectiveUser().getEmail();
-  const recipient = configured || effectiveUser;
+  const recipient = configured || 'crickethubcanada@gmail.com' || effectiveUser;
   if (!recipient) {
     throw new Error('No contact email is configured.');
   }
