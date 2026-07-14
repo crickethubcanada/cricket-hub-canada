@@ -25,10 +25,32 @@
 
   const minimumPrice = (product) => Math.min(...product.variants.map((variant) => variant.price));
   const maximumPrice = (product) => Math.max(...product.variants.map((variant) => variant.price));
+  const maximumOriginalPrice = (product) => Math.max(...product.variants.map((variant) => variant.originalPrice || variant.price));
+  const maximumSavings = (product) => Math.max(...product.variants.map((variant) => Math.max(0, (variant.originalPrice || variant.price) - variant.price)));
   const priceLabel = (product) =>
     minimumPrice(product) === maximumPrice(product)
       ? money(minimumPrice(product))
       : `${money(minimumPrice(product))}–${money(maximumPrice(product))}`;
+
+  const cardPriceMarkup = (product) => {
+    const savings = maximumSavings(product);
+    const original = maximumOriginalPrice(product);
+    return `
+      <div class="product-price-row">
+        <span class="product-price-current">${priceLabel(product)} CAD</span>
+        ${savings > 0 ? `<span class="product-price-original">${money(original)} CAD</span>` : ""}
+      </div>`;
+  };
+
+  const variantPriceMarkup = (variant) => {
+    const original = variant.originalPrice || variant.price;
+    const savings = Math.max(0, original - variant.price);
+    return `
+      <div class="modal-price-row">
+        <span class="modal-price-current">${money(variant.price)} CAD</span>
+        ${savings > 0 ? `<span class="modal-price-original">${money(original)} CAD</span><span class="save-inline">Save ${money(savings)}</span>` : ""}
+      </div>`;
+  };
 
   function renderFilters() {
     if (!filters) return;
@@ -59,14 +81,15 @@
         (product) => `
           <article class="product-card">
             <div class="product-image-wrap">
-              ${product.featured ? '<span class="badge">Featured</span>' : ""}
+              ${maximumSavings(product) > 0 ? `<span class="discount-badge">Save ${money(maximumSavings(product))}</span>` : ""}
+              ${product.featured ? '<span class="badge featured-badge">Featured</span>' : ""}
               <img src="${imagePath(product, product.images[0])}" alt="${product.name}" loading="lazy">
             </div>
             <div class="product-body">
               <span class="product-category">${product.category}</span>
               <h3>${product.name}</h3>
               <p class="product-short">${product.short}</p>
-              <div class="product-price">${priceLabel(product)} CAD</div>
+              ${cardPriceMarkup(product)}
               <div class="product-actions">
                 <button class="btn btn-outline" type="button" data-view-product="${product.id}">View details</button>
                 <button class="btn btn-primary" type="button" data-message-product="${product.id}">Inquire by Message</button>
@@ -106,7 +129,7 @@
         <span class="product-category">${product.category}</span>
         <h2>${product.name}</h2>
         <p class="modal-description">${product.short}</p>
-        <div class="modal-price" id="modal-price">${money(product.variants[0].price)} CAD</div>
+        <div class="modal-price" id="modal-price">${variantPriceMarkup(product.variants[0])}</div>
         ${
           product.variants.length
             ? `<div class="variant-group">
@@ -141,7 +164,7 @@
     const variantSelect = modalBody.querySelector("#variant-select");
     const modalPrice = modalBody.querySelector("#modal-price");
     variantSelect?.addEventListener("change", () => {
-      modalPrice.textContent = `${money(product.variants[Number(variantSelect.value)].price)} CAD`;
+      modalPrice.innerHTML = variantPriceMarkup(product.variants[Number(variantSelect.value)]);
     });
 
     modalBody.querySelector("#modal-message")?.addEventListener("click", () => {

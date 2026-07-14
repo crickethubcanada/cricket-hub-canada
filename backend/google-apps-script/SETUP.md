@@ -1,56 +1,60 @@
-# Free contact-form backend: Google Apps Script
+# Contact-form email setup
 
-This backend does two things:
+The website form is already coded. Google Apps Script receives the form, saves every inquiry in a Google Sheet, and emails all details to **crickethubcanada@gmail.com**.
 
-1. Sends every valid website inquiry to the script owner's email.
-2. Saves every inquiry in a private `Leads` tab in Google Sheets.
+## 1. Create the lead sheet
 
-No server or paid hosting is required.
+1. Sign in to the Google account that owns `crickethubcanada@gmail.com`.
+2. Open Google Sheets and create a blank spreadsheet.
+3. Name it `Cricket Hub Canada Leads`.
+4. In the spreadsheet, choose **Extensions → Apps Script**.
 
-## Setup
+## 2. Add the backend code
 
-1. Create a new Google Sheet named `Cricket Hub Canada Leads`.
-2. In that Sheet, choose **Extensions → Apps Script**.
-3. Delete the sample code and paste the contents of `Code.gs`.
+1. Delete the sample code in the Apps Script editor.
+2. Open `backend/google-apps-script/Code.gs` from this website project.
+3. Copy the complete file and paste it into Apps Script.
 4. Click **Save**.
-5. Choose **Deploy → New deployment**.
-6. Select **Web app** as the deployment type.
-7. Set:
-   - Execute as: **Me**
-   - Who has access: **Anyone**
-8. Click **Deploy** and approve the requested permissions.
-9. Copy the web-app URL ending in `/exec`.
-10. Open `assets/js/config.js` in this website and paste the URL here:
+
+## 3. Deploy as a web app
+
+1. Click **Deploy → New deployment**.
+2. Click the gear icon and select **Web app**.
+3. Description: `Cricket Hub Canada contact form`.
+4. Execute as: **Me**.
+5. Who has access: **Anyone**.
+6. Click **Deploy** and approve the requested Google permissions.
+7. Copy the web-app URL ending in `/exec`.
+
+## 4. Connect it to the website
+
+Open `assets/js/config.js` and replace:
 
 ```js
-contactFormEndpoint: "PASTE_THE_EXEC_URL_HERE",
+contactFormEndpoint: "",
 ```
 
-11. Commit the edited file to GitHub. The form will now send email and create lead rows.
+with:
 
-## Recipient email
+```js
+contactFormEndpoint: "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec",
+```
 
-By default, the email is sent to the Google account that owns and deploys the Apps Script.
+Commit and push that change to GitHub.
 
-To use a different email:
+## 5. Test
 
-1. In Apps Script, open **Project Settings**.
-2. Under **Script Properties**, add:
-   - Property: `CONTACT_EMAIL`
-   - Value: your business email
-3. Deploy a new version.
+1. Wait for GitHub Pages to redeploy.
+2. Open the live website in a private/incognito window.
+3. Fill in every form field and click **Send inquiry**.
+4. Confirm that:
+   - the site displays a success message;
+   - an email arrives at `crickethubcanada@gmail.com`;
+   - a `Leads` tab is created in the Google Sheet;
+   - all submitted fields appear in one new row.
 
-## Testing
+The email includes inquiry type, product, name, email, phone, city, message, page URL, and a submission ID. Replies go directly to the customer's submitted email address.
 
-1. Open the `/exec` URL directly. It should say the endpoint is running.
-2. Submit a test message from the published website.
-3. Confirm:
-   - the email reaches the recipient;
-   - a `Leads` sheet is created;
-   - the new row is marked `New`.
+## Updating the script later
 
-## Important
-
-- Keep the Google Sheet private.
-- Do not publish the Sheet or share edit access publicly.
-- Google Apps Script and MailApp have usage quotas. This setup is intended for a small launch, not high-volume ecommerce.
+After changing `Code.gs`, go to **Deploy → Manage deployments**, edit the existing deployment, choose **New version**, and deploy again. Keep the same `/exec` URL.

@@ -235,3 +235,36 @@ button { cursor: pointer; }
   .gallery { padding: 18px; }
   .modal-details { padding: 25px 19px 35px; }
 }
+
+/* July 2026 storefront refinements */
+.hero-grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 34px; }
+.hero-media { min-width: 0; padding: 44px 0 44px 24px; overflow: visible; }
+.hero-media img {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+  object-position: center;
+}
+.featured-badge { left: auto; right: 12px; background: #171717; }
+.discount-badge {
+  position: absolute; left: 12px; top: 12px; z-index: 2;
+  background: var(--red); color: #fff; font-size: .75rem; font-weight: 950;
+  padding: 6px 9px; border-radius: 4px; text-transform: uppercase;
+}
+.product-price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 13px; }
+.product-price-current { color: var(--red); font-size: 1.25rem; font-weight: 950; }
+.product-price-original { color: #777; font-size: .92rem; text-decoration: line-through; }
+.modal-price-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.modal-price-current { color: var(--red); font-size: 1.7rem; font-weight: 950; }
+.modal-price-original { color: #777; font-size: 1rem; text-decoration: line-through; }
+.save-inline { background: var(--red); color: #fff; border-radius: 4px; padding: 4px 7px; font-size: .78rem; font-weight: 900; }
+@media (max-width: 800px) {
+  .hero-grid { gap: 0; }
+  .hero-media { min-height: 0; padding: 0 0 42px; }
+  .hero-media img { max-height: none; width: 100%; height: auto; object-fit: contain; }
+}
+@media (max-width: 560px) {
+  .hero-copy { padding-bottom: 24px; }
+  .hero-media { padding-bottom: 32px; }
+}

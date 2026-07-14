@@ -6,11 +6,12 @@ window.PRODUCTS = [
     "category": "English Willow Bats",
     "featured": false,
     "short": "An entry-level English willow bat with a traditional profile, pre-knocking and a full-length bat cover.",
-    "availability": "Available to order — exact bat confirmed before payment",
+    "availability": "Available to order — exact bat confirmed before payment. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
         "label": "Standard",
-        "price": 187
+        "price": 187,
+        "originalPrice": 187
       }
     ],
     "images": [
@@ -35,15 +36,17 @@ window.PRODUCTS = [
     "category": "English Willow Bats",
     "featured": true,
     "short": "A balanced English willow bat offered in short-handle and long-blade options.",
-    "availability": "Available to order — exact bat confirmed before payment",
+    "availability": "Available to order — exact bat confirmed before payment. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
-        "label": "SH",
-        "price": 310
+        "label": "Short Handle",
+        "price": 290,
+        "originalPrice": 310
       },
       {
-        "label": "LB",
-        "price": 310
+        "label": "Long Blade",
+        "price": 290,
+        "originalPrice": 310
       }
     ],
     "images": [
@@ -68,11 +71,12 @@ window.PRODUCTS = [
     "category": "English Willow Bats",
     "featured": false,
     "short": "Hand-crafted English willow bat with thick edges, curved front profile and shock-absorbing handle.",
-    "availability": "Available to order — exact bat confirmed before payment",
+    "availability": "Available to order — exact bat confirmed before payment. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
-        "label": "SH",
-        "price": 310
+        "label": "Short Handle",
+        "price": 310,
+        "originalPrice": 310
       }
     ],
     "images": [
@@ -97,15 +101,17 @@ window.PRODUCTS = [
     "category": "English Willow Bats",
     "featured": true,
     "short": "Top-grade English willow profile with a substantial edge and toe for power-focused all-round play.",
-    "availability": "Available to order — exact bat confirmed before payment",
+    "availability": "Available to order — exact bat confirmed before payment. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
-        "label": "SH",
-        "price": 380
+        "label": "Short Handle",
+        "price": 350,
+        "originalPrice": 380
       },
       {
-        "label": "LB + LH",
-        "price": 350
+        "label": "Long Blade + Long Handle",
+        "price": 350,
+        "originalPrice": 350
       }
     ],
     "images": [
@@ -131,15 +137,17 @@ window.PRODUCTS = [
     "category": "English Willow Bats",
     "featured": true,
     "short": "A premium English willow bat designed for a combination of power, control and comfortable pickup.",
-    "availability": "Available to order — exact bat confirmed before payment",
+    "availability": "Available to order — exact bat confirmed before payment. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
-        "label": "SH",
-        "price": 463
+        "label": "Short Handle",
+        "price": 413,
+        "originalPrice": 463
       },
       {
-        "label": "LB",
-        "price": 440
+        "label": "Long Blade",
+        "price": 413,
+        "originalPrice": 440
       }
     ],
     "images": [
@@ -165,11 +173,12 @@ window.PRODUCTS = [
     "category": "English Willow Bats",
     "featured": true,
     "short": "Grade 1+ English willow bat with 7–9 grains, curved front profile and thick edges.",
-    "availability": "Available to order — exact bat confirmed before payment",
+    "availability": "Available to order — exact bat confirmed before payment. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
-        "label": "SH",
-        "price": 470
+        "label": "Short Handle",
+        "price": 420,
+        "originalPrice": 470
       }
     ],
     "images": [
@@ -194,11 +203,12 @@ window.PRODUCTS = [
     "category": "English Willow Bats",
     "featured": true,
     "short": "Player-grade English willow bat with a premium grain structure and full-length cushioned cover.",
-    "availability": "Available to order — exact weight and bat photos confirmed before payment",
+    "availability": "Available to order — exact weight and bat photos confirmed before payment. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
         "label": "Standard",
-        "price": 559
+        "price": 510,
+        "originalPrice": 559
       }
     ],
     "images": [
@@ -223,11 +233,12 @@ window.PRODUCTS = [
     "category": "English Willow Bats",
     "featured": true,
     "short": "A player/SP-grade English willow bat with a fine grain structure and lightweight playing range.",
-    "availability": "Available to order — exact bat confirmed before payment",
+    "availability": "Available to order — exact bat confirmed before payment. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
         "label": "Standard",
-        "price": 1780
+        "price": 970,
+        "originalPrice": 1780
       }
     ],
     "images": [
@@ -252,11 +263,12 @@ window.PRODUCTS = [
     "category": "Tennis Bats",
     "featured": false,
     "short": "A Kashmir willow hard-tennis bat with a scoop profile for a lighter pickup and strong hitting area.",
-    "availability": "Available to order",
+    "availability": "Available to order. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
         "label": "Standard",
-        "price": 75
+        "price": 75,
+        "originalPrice": 75
       }
     ],
     "images": [
@@ -279,11 +291,12 @@ window.PRODUCTS = [
     "category": "Cricket Balls",
     "featured": false,
     "short": "A white leather cricket ball with a prominent stitched seam for club practice and match use.",
-    "availability": "Available to order",
+    "availability": "Available to order. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
         "label": "Each",
-        "price": 22
+        "price": 22,
+        "originalPrice": 22
       }
     ],
     "images": [
@@ -306,11 +319,12 @@ window.PRODUCTS = [
     "category": "Cricket Balls",
     "featured": false,
     "short": "A red four-piece leather cricket ball intended for 35–50-over games.",
-    "availability": "Available to order",
+    "availability": "Available to order. Shipping charges are extra and are not included in the displayed price.",
     "variants": [
       {
         "label": "Each",
-        "price": 20
+        "price": 20,
+        "originalPrice": 20
       }
     ],
     "images": [
