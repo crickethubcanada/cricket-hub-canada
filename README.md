@@ -11,7 +11,7 @@ A zero-monthly-cost product catalogue designed for GitHub Pages.
 - Email/contact form
 - Free Google Apps Script backend
 - Lead logging to Google Sheets
-- Kingston pickup and shipping information
+- Oakville pickup and shipping information
 - Shipping, return, privacy and terms page
 - No paid theme, domain or ecommerce subscription required
 
