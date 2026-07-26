@@ -9,7 +9,7 @@
 - Product photographs for every listed item
 - Square logo and a dark website banner
 - Retail prices and product descriptions
-- Kingston phone number
+- Oakville phone number
 - Contact form, phone/text inquiries and policy page
 - Google Apps Script email/lead backend
 
@@ -40,7 +40,7 @@
 - Current supplier availability and exact variant
 - Your wholesale cost and real profit after shipping/fees
 - Exact bat photos, weight and size
-- Delivery time to Kingston or direct shipping process
+- Delivery time to Oakville or direct shipping process
 - Customer shipping charge
 - Return, damage and warranty responsibility
 - Whether HST should be charged

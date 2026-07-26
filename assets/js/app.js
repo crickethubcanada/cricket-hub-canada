@@ -229,7 +229,7 @@
       if (config.publicEmail) element.href = `mailto:${config.publicEmail}`;
     });
     document.querySelectorAll("[data-location]").forEach((element) => {
-      element.textContent = config.location || "Kingston, Ontario";
+      element.textContent = config.location || "Oakville, Ontario";
     });
     document.querySelectorAll("[data-instagram]").forEach((element) => {
       if (config.instagramUrl) {

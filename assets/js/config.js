@@ -1,6 +1,6 @@
 window.SITE_CONFIG = {
   businessName: "Cricket Hub Canada",
-  location: "Kingston, Ontario, Canada",
+  location: "Oakville, Ontario, Canada",
   phoneDisplay: "+1 (613) 329-1456",
   phoneNumber: "16133291456",
   publicEmail: "crickethubcanada@gmail.com",
