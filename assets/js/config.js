@@ -5,6 +5,6 @@ window.SITE_CONFIG = {
   phoneNumber: "16133291456",
   publicEmail: "crickethubcanada@gmail.com",
   instagramUrl: "",
-  contactFormEndpoint: "",
+  contactFormEndpoint: "https://script.google.com/macros/s/AKfycbzUw4FzkIF1b-bRbAOuI2Lqm8-GN-b7m_NxxUXAyJNh2uzIqmakpwjkAtW9QjNXMXIQ/exec",
   orderTimeline: "Most products are normally ready within 5–7 business days after availability is confirmed."
 };
