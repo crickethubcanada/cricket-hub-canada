@@ -20,30 +20,59 @@
   const money = (value) =>
     new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", minimumFractionDigits: 2 }).format(value);
 
-  const imagePath = (product, filename) =>
-    `assets/images/products/${encodeURIComponent(product.id)}/${encodeURIComponent(filename)}`;
+  const imagePath = (product, filename) => {
+    // Existing items keep using their ID; accessories may specify a nested image folder.
+    const folder = product.imageFolder || product.id;
+    const encodedFolder = folder.split("/").map(encodeURIComponent).join("/");
+    return `assets/images/products/${encodedFolder}/${encodeURIComponent(filename)}`;
+  };
 
-  const minimumPrice = (product) => Math.min(...product.variants.map((variant) => variant.price));
-  const maximumPrice = (product) => Math.max(...product.variants.map((variant) => variant.price));
-  const maximumOriginalPrice = (product) => Math.max(...product.variants.map((variant) => variant.originalPrice || variant.price));
-  const maximumSavings = (product) => Math.max(...product.variants.map((variant) => Math.max(0, (variant.originalPrice || variant.price) - variant.price)));
-  const priceLabel = (product) =>
-    minimumPrice(product) === maximumPrice(product)
-      ? money(minimumPrice(product))
-      : `${money(minimumPrice(product))}–${money(maximumPrice(product))}`;
+  const pricedVariants = (product) =>
+    product.variants.filter((variant) => typeof variant.price === "number" && Number.isFinite(variant.price));
+  const minimumPrice = (product) => {
+    const prices = pricedVariants(product).map((variant) => variant.price);
+    return prices.length ? Math.min(...prices) : null;
+  };
+  const maximumPrice = (product) => {
+    const prices = pricedVariants(product).map((variant) => variant.price);
+    return prices.length ? Math.max(...prices) : null;
+  };
+  const maximumOriginalPrice = (product) => {
+    const prices = pricedVariants(product).map((variant) => variant.originalPrice ?? variant.price);
+    return prices.length ? Math.max(...prices) : null;
+  };
+  const maximumSavings = (product) => {
+    const savings = pricedVariants(product).map((variant) =>
+      Math.max(0, (variant.originalPrice ?? variant.price) - variant.price)
+    );
+    return savings.length ? Math.max(...savings) : 0;
+  };
+  const priceLabel = (product) => {
+    const minimum = minimumPrice(product);
+    const maximum = maximumPrice(product);
+    if (minimum === null) return "Price on request";
+    return minimum === maximum ? money(minimum) : `${money(minimum)}–${money(maximum)}`;
+  };
+  const variantLabel = (variant) =>
+    typeof variant.price === "number" && Number.isFinite(variant.price)
+      ? `${money(variant.price)} CAD`
+      : "Price on request";
 
   const cardPriceMarkup = (product) => {
     const savings = maximumSavings(product);
     const original = maximumOriginalPrice(product);
     return `
       <div class="product-price-row">
-        <span class="product-price-current">${priceLabel(product)} CAD</span>
+        <span class="product-price-current">${priceLabel(product)}${minimumPrice(product) === null ? "" : " CAD"}</span>
         ${savings > 0 ? `<span class="product-price-original">${money(original)} CAD</span>` : ""}
       </div>`;
   };
 
   const variantPriceMarkup = (variant) => {
-    const original = variant.originalPrice || variant.price;
+    if (typeof variant.price !== "number" || !Number.isFinite(variant.price)) {
+      return `<div class="modal-price-row"><span class="modal-price-current">Price on request</span></div>`;
+    }
+    const original = variant.originalPrice ?? variant.price;
     const savings = Math.max(0, original - variant.price);
     return `
       <div class="modal-price-row">
@@ -136,7 +165,7 @@
                 <label for="variant-select">Select option</label>
                 <select class="variant-select" id="variant-select">
                   ${product.variants
-                    .map((variant, index) => `<option value="${index}">${variant.label} — ${money(variant.price)} CAD</option>`)
+                    .map((variant, index) => `<option value="${index}">${variant.label} — ${variantLabel(variant)}</option>`)
                     .join("")}
                 </select>
               </div>`
@@ -145,7 +174,7 @@
         <p class="availability">${product.availability}</p>
         <h3>Product details</h3>
         <ul class="feature-list">${product.features.map((feature) => `<li>${feature}</li>`).join("")}</ul>
-        <p><small>Cricket bats are natural willow products. Grains, colour, exact weight and appearance can vary between individual bats.</small></p>
+        ${product.category === "English Willow Bats" || product.category === "Tennis Bats" ? `<p><small>Cricket bats are natural willow products. Grains, colour, exact weight and appearance can vary between individual bats.</small></p>` : ""}
         <div class="modal-actions">
           <button class="btn btn-primary" type="button" id="modal-message">Inquire by Message</button>
           <button class="btn btn-outline" type="button" id="modal-call">Call now</button>
@@ -195,7 +224,7 @@
     const variant = product.variants[variantIndex] || product.variants[0];
     const message = [
       `Hi ${config.businessName || "Cricket Hub Canada"},`,
-      `I am interested in ${product.name}${variant ? ` (${variant.label})` : ""} listed at ${money(variant.price)} CAD.`,
+      `I am interested in ${product.name}${variant ? ` (${variant.label})` : ""}${typeof variant.price === "number" ? ` listed at ${money(variant.price)} CAD` : " (price on request)"}.`,
       "Please confirm current availability, exact photos/weight if applicable, and pickup or shipping options."
     ].join("\n");
     window.location.href = `sms:+${config.phoneNumber}?body=${encodeURIComponent(message)}`;
@@ -203,7 +232,7 @@
 
   function prefillProductInquiry(product, variant) {
     if (productField) {
-      productField.value = `${product.name}${variant ? ` — ${variant.label} (${money(variant.price)} CAD)` : ""}`;
+      productField.value = `${product.name}${variant ? ` — ${variant.label} (${variantLabel(variant)})` : ""}`;
     }
     const typeField = document.querySelector("#inquiry-type");
     if (typeField) typeField.value = "Product inquiry";

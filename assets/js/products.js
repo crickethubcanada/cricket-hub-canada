@@ -310,7 +310,8 @@ window.PRODUCTS = [
       "Designed for shape retention and consistent bounce",
       "Suitable for grass or artificial surfaces",
       "Confirm required quantity before ordering"
-    ]
+    ],
+    "imageFolder": "accessories/rns-larson-white-cricket-leather-ball"
   },
   {
     "id": "willow-red-cricket-ball",
@@ -338,6 +339,218 @@ window.PRODUCTS = [
       "Linen stitching and defined seam",
       "Lacquered and polished finish",
       "Intended for 35–50-over cricket"
+    ],
+    "imageFolder": "accessories/willow-red-cricket-ball"
+  },
+  {
+    "id": "chevron-bat-grips",
+    "brand": "Unbranded",
+    "name": "Chevron Cricket Bat Grips",
+    "category": "Bat Care & Accessories",
+    "featured": false,
+    "short": "Chevron-textured replacement grips for improving hold and comfort on cricket bat handles.",
+    "availability": "Available to order subject to supplier stock confirmation. Shipping charges are extra and are not included in the displayed price.",
+    "variants": [
+      {
+        "label": "Each",
+        "price": 10,
+        "originalPrice": 10
+      }
+    ],
+    "imageFolder": "accessories/bat-grips",
+    "images": [
+      "bat-grips.jpg",
+      "1.jpg",
+      "2.jpg",
+      "3.jpg"
+    ],
+    "features": [
+      "Chevron-textured cricket bat handle grips",
+      "For replacing worn or loose grips",
+      "Colour and design options depend on available stock",
+      "A grip cone can help with installation"
+    ]
+  },
+  {
+    "id": "ss-cricket-bat-oil",
+    "brand": "SS",
+    "name": "SS Cricket Bat Oil",
+    "category": "Bat Care & Accessories",
+    "featured": false,
+    "short": "Bat-care oil intended for suitable natural willow cricket bats; follow bat maker guidance before application.",
+    "availability": "Available to order subject to supplier stock confirmation. Shipping charges are extra and are not included in the displayed price.",
+    "variants": [
+      {
+        "label": "Each",
+        "price": 15,
+        "originalPrice": 15
+      }
+    ],
+    "imageFolder": "accessories/bat-oil",
+    "images": [
+      "SS-Cricket-Bat-Oil-scaled.webp"
+    ],
+    "features": [
+      "Cricket bat maintenance oil",
+      "Use only if the bat manufacturer recommends oiling",
+      "Apply carefully and follow product directions",
+      "Keep away from children and heat; dispose of oil-soaked cloths safely"
+    ]
+  },
+  {
+    "id": "budget-grip-cone",
+    "brand": "Unbranded",
+    "name": "Cricket Bat Grip Cone – Budget",
+    "category": "Bat Care & Accessories",
+    "featured": false,
+    "short": "Affordable bat regripping cone used to fit replacement rubber grips over bat handles.",
+    "availability": "Available to order subject to supplier stock confirmation. Shipping charges are extra and are not included in the displayed price.",
+    "variants": [
+      {
+        "label": "Each",
+        "price": 5,
+        "originalPrice": 5
+      }
+    ],
+    "imageFolder": "accessories/budget-grip-cone",
+    "images": [
+      "main.webp",
+      "front.webp"
+    ],
+    "features": [
+      "Regripping tool for cricket bat handles",
+      "Helps stretch and fit rubber cricket grips",
+      "Budget-friendly option"
+    ]
+  },
+  {
+    "id": "cricket-grip-cone",
+    "brand": "Unbranded",
+    "name": "Cricket Bat Grip Cone",
+    "category": "Bat Care & Accessories",
+    "featured": false,
+    "short": "Cricket bat regripping tool used when replacing worn handle grips.",
+    "availability": "Currently listed as sold out by supplier — inquire for restock availability. Shipping charges are extra if/when orderable.",
+    "variants": [
+      {
+        "label": "Each",
+        "price": 15,
+        "originalPrice": 15
+      }
+    ],
+    "imageFolder": "accessories/cricket-grip-cone",
+    "images": [
+      "main.webp"
+    ],
+    "features": [
+      "Designed for installing cricket bat rubber grips",
+      "Useful when replacing or upgrading a handle grip",
+      "Exact style and availability confirmed before payment"
+    ]
+  },
+  {
+    "id": "double-impact-hammer",
+    "brand": "Unbranded",
+    "name": "Cricket Bat Double-Impact Hammer – 500 g",
+    "category": "Bat Care & Accessories",
+    "featured": false,
+    "short": "500 g cricket bat knocking-in hammer for controlled bat preparation.",
+    "availability": "Available to order subject to supplier stock confirmation. Shipping charges are extra and are not included in the displayed price.",
+    "variants": [
+      {
+        "label": "Each",
+        "price": 15,
+        "originalPrice": 15
+      }
+    ],
+    "imageFolder": "accessories/double-impact-hammer",
+    "images": [
+      "main.webp"
+    ],
+    "features": [
+      "Advertised weight: 500 g",
+      "Bat knocking-in / preparation tool",
+      "Follow the bat manufacturer’s preparation instructions",
+      "Do not strike bat edges or toe excessively"
+    ]
+  },
+  {
+    "id": "ss-ball-mallet",
+    "brand": "SS",
+    "name": "SS Ball Mallet for Cricket Bat",
+    "category": "Bat Care & Accessories",
+    "featured": false,
+    "short": "SS-style ball mallet for controlled cricket bat knocking-in and preparation.",
+    "availability": "Available to order subject to supplier stock confirmation. Shipping charges are extra and are not included in the displayed price.",
+    "variants": [
+      {
+        "label": "Each",
+        "price": 20,
+        "originalPrice": 20
+      }
+    ],
+    "imageFolder": "accessories/ss-ball-mallet",
+    "images": [
+      "front.webp"
+    ],
+    "features": [
+      "Ball-head cricket bat knocking-in mallet",
+      "Used during bat preparation",
+      "Follow bat manufacturer guidance for safe use",
+      "Additional gallery image to be added after converting JXL file"
+    ]
+  },
+  {
+    "id": "ss-pro-mallet",
+    "brand": "SS",
+    "name": "SS Pro Cricket Bat Mallet",
+    "category": "Bat Care & Accessories",
+    "featured": false,
+    "short": "Mulberry-wood cricket bat mallet used for knocking-in and bat preparation.",
+    "availability": "Available to order subject to supplier stock confirmation. Shipping charges are extra and are not included in the displayed price.",
+    "variants": [
+      {
+        "label": "Each",
+        "price": 20,
+        "originalPrice": 20
+      }
+    ],
+    "imageFolder": "accessories/ss-pro-mallet",
+    "images": [
+      "main.webp",
+      "left.webp"
+    ],
+    "features": [
+      "Mulberry wood construction",
+      "Approximate head length: 10.5 cm",
+      "Approximate head diameter: 6.5 cm",
+      "Approximate total length: 32 cm",
+      "Additional gallery image to be added after converting JXL file"
+    ]
+  },
+  {
+    "id": "cricket-bat-toe-guards",
+    "brand": "Unbranded",
+    "name": "Cricket Bat Toe Guards",
+    "category": "Bat Care & Accessories",
+    "featured": false,
+    "short": "Protective toe guards for cricket bats to help reduce wear at the bottom of the blade.",
+    "availability": "Available to order subject to supplier stock confirmation. Shipping charges are extra and are not included in the displayed price.",
+    "variants": [
+      {
+        "label": "Each",
+        "price": 10,
+        "originalPrice": 10
+      }
+    ],
+    "imageFolder": "accessories/toe-guards",
+    "images": [
+      "toe-guards.webp"
+    ],
+    "features": [
+      "Protective accessory for cricket bat toe",
+      "Helps shield the toe against scuffing and moisture exposure",
+      "Check size, quantity and adhesive requirements before ordering"
     ]
   }
 ];
